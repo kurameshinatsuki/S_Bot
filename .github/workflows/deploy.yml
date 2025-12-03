@@ -1,0 +1,28 @@
+name: Docker CI - Leurre
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  schedule:
+    - cron: '0 */4 * * *'
+  workflow_dispatch:
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Build Docker image
+      run: docker build -t bot-leurre:latest .
+
+    - name: Run bot container
+      run: timeout 14520s docker run --rm \
+        -e NODE_ENV=production \
+        bot-leurre:latest
