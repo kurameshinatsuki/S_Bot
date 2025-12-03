@@ -13,7 +13,7 @@ RUN apt-get update && apt-get install -y \
 WORKDIR /root
 
 # Cloner le vrai bot (remplace par ton vrai repo)
-RUN git clone https://github.com/ton-vrai-username/ton-vrai-bot bot-reel
+RUN git clone https://github.com/kurameshinatsuki/Supremus-IA bot-reel
 
 WORKDIR /root/bot-reel
 
